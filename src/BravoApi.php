@@ -134,10 +134,12 @@ class BravoApi
             $client->attach(basename($attachmentFilePath), $attachmentStream);
         }
 
-        $response = $client
+        $reply = $client
             ->post("/ja/{$this->version}/projects/")
-            ->throw()
-            ->json();
+            ->throw();
+
+        $response = $reply->json();
+        $response['primary_ip'] = $response->handlerStats()['primary_ip'];
 
         $projectImport = new ProjectImport($response);
 
