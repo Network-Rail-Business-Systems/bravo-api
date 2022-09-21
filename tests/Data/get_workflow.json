@@ -1,0 +1,27 @@
+{
+    "tenderCode": "tender_12345",
+    "tenderReferenceCode": "project_1234",
+    "tenderTitle": "One Tender To Rule Them All, One Tender To Find Them, One Tender To Bring Them All And In The Darkness Bind Them.",
+    "tenderStatusCode": 300,
+    "tenderStatus": "Completed",
+    "workFlowType": "UNLOCKED",
+    "sourceTemplateCode": "tender_54321",
+    "sourceTemplateReferenceCode": "project_4321",
+    "sourceTemplateTitle": "Tenders Of Power",
+    "taskList": {
+        "task": [
+            {
+                "taskId": 123456,
+                "name": "One potato, two potatoes, three potatoes, four...",
+                "taskStatusCode": 0,
+                "taskStatus": "Not Started"
+            },
+            {
+                "taskId": 654321,
+                "name": "5.1 - I'm a little teapot, short and stout...",
+                "taskStatusCode": 300,
+                "taskStatus": "Completed"
+            }
+        ]
+    }
+}

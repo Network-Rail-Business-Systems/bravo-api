@@ -1,0 +1,32 @@
+{
+    "name": "bravo-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "lint-staged": {
+        "{src,config,database,routes,tests}/**/*.php": [
+            "php ./vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php",
+            "prettier --write"
+        ],
+        "src/**/*.php": [
+            "./vendor/bin/phpstan analyse"
+        ]
+    },
+    "scripts": {
+        "prettier": "prettier",
+        "prepare": "husky install",
+        "pre-commit": "lint-staged",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "lint-staged": "^11.1.2",
+        "@prettier/plugin-php": "^0.17.4",
+        "husky": "^7.0.1",
+        "prettier": "^2.3.2"
+    }
+}

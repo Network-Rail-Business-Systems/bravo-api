@@ -1,0 +1,52 @@
+name: 'Create a development build on prerelease'
+
+on:
+  release:
+    types: [prereleased]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Load Composer cache...
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/composer
+          key: composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Load NPM cache...
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Composer...
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Install NPM...
+        run: npm install
+
+      - name: Run Laravel Mix...
+        run: npm run dev
+
+      - name: Package build...
+        run: zip -rq9 ${{ github.ref_name }}.zip . -x '.git/*' -x 'node_modules/*'
+
+      - name: Save build artifact...
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.ref_name }}
+          path: ${{ github.ref_name }}.zip
+          retention-days: 7

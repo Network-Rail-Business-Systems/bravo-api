@@ -1,0 +1,91 @@
+{
+    "returnCode": 0,
+    "returnMessage": "OK",
+    "totRecords": 53,
+    "returnedRecords": 53,
+    "startAt": 1,
+    "projectList": {
+        "project": [
+            {
+                "tender": {
+                    "code": "",
+                    "tenderCode": "tender_10066",
+                    "tenderReferenceCode": "tender_1",
+                    "title": "PRJ",
+                    "buyerCompany": {
+                        "id": 38668,
+                        "code": "123456789",
+                        "name": "GURU(38668)"
+                    },
+                    "projectOwner": {
+                        "id": 88961,
+                        "code": "SUPERUSER_EXTCODE",
+                        "name": "Alessandro Locatelli GURU"
+                    },
+                    "activationDate": "2010-03-29T15:37:20.000Z",
+                    "creationDate": "2010-03-29T15:37:21.000Z",
+                    "requirementsDate": "2010-03-29T00:00:00.000Z",
+                    "lastModTime": "2017-08-03T13:11:34.000Z",
+                    "divisionId": 3072405,
+                    "divisionName": "Division",
+                    "tenderState": 100,
+                    "tenderStatusLabel": "project.state.running",
+                    "sourceTemplateCode": "",
+                    "sourceTemplateReferenceCode": " - ",
+                    "lotType": "SINGLELOTS",
+                    "projectType": "",
+                    "workFlowType": "NONE",
+                    "archiveStatus": 0,
+                    "additionalInfoList": {
+                        "additionalInfo": []
+                    },
+                    "buyerAttachmentList": {
+                        "attachment": []
+                    },
+                    "deleted": 0
+                }
+            },
+            {
+                "tender": {
+                    "code": "",
+                    "tenderCode": "tender_10076",
+                    "tenderReferenceCode": "tender_5",
+                    "title": "sssss",
+                    "buyerCompany": {
+                        "id": 38668,
+                        "code": "123456789",
+                        "name": "GURU(38668)"
+                    },
+                    "projectOwner": {
+                        "id": 88961,
+                        "code": "SUPERUSER_EXTCODE",
+                        "name": "Alessandro Locatelli GURU"
+                    },
+                    "activationDate": "2019-09-02T00:00:00.000Z",
+                    "officialStartDate": "2010-03-31T00:00:00.000Z",
+                    "estimatedCompletionDate": "2010-08-30T00:00:00.000Z",
+                    "creationDate": "2010-04-01T09:19:50.000Z",
+                    "requirementsDate": "2010-04-01T00:00:00.000Z",
+                    "lastModTime": "2019-09-02T10:04:01.000Z",
+                    "divisionId": 3072405,
+                    "divisionName": "Division",
+                    "tenderState": 100,
+                    "tenderStatusLabel": "project.state.running",
+                    "sourceTemplateCode": "tender_10075",
+                    "sourceTemplateReferenceCode": "tender_4 - template con notifiche disattivate",
+                    "lotType": "SINGLELOTS",
+                    "projectType": "",
+                    "workFlowType": "UNLOCKED",
+                    "archiveStatus": 0,
+                    "additionalInfoList": {
+                        "additionalInfo": []
+                    },
+                    "buyerAttachmentList": {
+                        "attachment": []
+                    },
+                    "deleted": 0
+                }
+            }
+        ]
+    }
+}

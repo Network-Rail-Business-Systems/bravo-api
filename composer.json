@@ -1,0 +1,50 @@
+{
+    "name": "networkrailbusinesssystems/bravo-api",
+    "description": "Package to send and retrieve data from the Bravo rest API",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "NetworkRailBusinessSystems\\BravoApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NetworkRailBusinessSystems\\BravoApi\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chris Rhymes",
+            "email": "christopher.rhymes@networkrail.co.uk"
+        },
+        {
+            "name": "Chris Abey",
+            "email": "christopher.abey@networkrail.co.uk"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NetworkRailBusinessSystems\\BravoApi\\BravoApiServiceProvider"
+            ],
+            "aliases": []
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "spatie/data-transfer-object": "^3.0",
+        "spatie/enum": "^3.9"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.20",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "nunomaduro/larastan": "^0.7.12"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ],
+        "test": "vendor/bin/phpunit"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "operationCode" : "create",
+    "project":{
+        "tender": {
+            "code": "",
+            "tenderCode": "tender_10066",
+            "tenderReferenceCode": "tender_1",
+            "title": "PRJ",
+            "buyerCompany": {
+                "id": 38668
+            },
+            "projectOwner": {
+                "id": 88961
+            },
+            "lotType": "SINGLELOTS",
+            "workFlowType": "NONE"
+        },
+        "categoryList": {
+            "category": []
+        },
+        "projectTeam": {
+            "user": [
+                {
+                    "id": 88961
+                }
+            ]
+        }
+    }
+}
