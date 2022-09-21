@@ -2,6 +2,7 @@
     "name": "networkrailbusinesssystems/bravo-api",
     "description": "Package to send and retrieve data from the Bravo rest API",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "NetworkRailBusinessSystems\\BravoApi\\": "src/"
