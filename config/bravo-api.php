@@ -14,4 +14,6 @@ return [
     'token_cache_for' => env('BRAVO_API_TOKEN_CACHE', 10),
 
     'proxy_address' => env('BRAVO_API_PROXY_ADDRESS', null),
+
+    'timeout' => env('BRAVO_API_TIMEOUT', 10),
 ];

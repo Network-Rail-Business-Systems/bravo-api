@@ -27,6 +27,7 @@ class BravoApi
         $this->http = Http::withOptions([
             'base_uri' => config('bravo-api.base_url'),
         ])
+            ->timeout(config('bravo-api.timeout'))
             ->proxy(config('bravo-api.proxy_address'));
 
         if (Cache::has('bravo_bearer_token')) {
