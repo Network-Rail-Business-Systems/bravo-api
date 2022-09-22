@@ -46,6 +46,16 @@ If you want to alter the default token cache time (10 minutes by default), then,
 BRAVO_API_TOKEN_CACHE=20
 ```
 
+| Key                     | Type    | Default |
+| ----------------------- | ------- | ------- |
+| BRAVO_API_USERNAME      | string  | null    |
+| BRAVO_API_PASSWORD      | string  | null    |
+| BRAVO_API_GRANT_TYPE    | string  | client_credentials |
+| BRAVO_API_BASE_URL      | string  | null    |
+| BRAVO_API_TOKEN_CACHE   | integer | 10      |
+| BRAVO_API_PROXY_ADDRESS | string  | null    |
+| BRAVO_API_TIMEOUT       | integer | 10      |
+
 ## Proxy:
 The HTTP Client requires a proxy to be able to connect with Bravo's API when the application is deployed on the servers.
 
