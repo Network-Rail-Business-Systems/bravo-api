@@ -17,5 +17,6 @@
         <env name="BRAVO_API_USERNAME" value="test"/>
         <env name="BRAVO_API_PASSWORD" value="testing"/>
         <env name="BRAVO_API_BASE_URL" value="http://bravo.test"/>
+        <env name="BRAVO_API_PROXY_ADDRESS" value="proxy.address" />
     </php>
 </phpunit>

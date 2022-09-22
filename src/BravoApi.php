@@ -138,8 +138,10 @@ class BravoApi
             ->post("/ja/{$this->version}/projects/")
             ->throw();
 
+        $handlerStats = $reply->handlerStats();
+
         $response = $reply->json();
-        $response['primary_ip'] = $response->handlerStats()['primary_ip'];
+        $response['primary_ip'] = $handlerStats['primary_ip'] ?? 'Not recorded';
 
         $projectImport = new ProjectImport($response);
 
