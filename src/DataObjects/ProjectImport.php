@@ -10,4 +10,5 @@ class ProjectImport extends DataTransferObject
     public string $returnMessage;
     public string|null $tenderCode;
     public string|null $tenderReferenceCode;
+    public ?string $primaryIp;
 }
