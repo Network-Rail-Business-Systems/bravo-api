@@ -169,11 +169,15 @@ class BravoApi
      */
     public function getWorkflow(string $tenderCode): Workflow
     {
-        $response = $this->http
+        $reply = $this->http
             ->withToken($this->token)
             ->get("/ja/{$this->version}/workflows/{$tenderCode}")
-            ->throw()
-            ->json();
+            ->throw();
+
+        $handlerStats = $reply->handlerStats();
+
+        $response = $reply->json();
+        $response['primary_ip'] = $handlerStats['primary_ip'] ?? 'Not recorded';
 
         return new Workflow($response);
     }

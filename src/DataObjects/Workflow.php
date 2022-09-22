@@ -26,6 +26,8 @@ class Workflow extends DataTransferObject
 
     public string $sourceTemplateTitle;
 
+    public ?string $primaryIp;
+
     #[MapFrom('taskList.task')]
     #[CastWith(TaskCollectionCaster::class)]
     public CollectionOfTask $tasks;
