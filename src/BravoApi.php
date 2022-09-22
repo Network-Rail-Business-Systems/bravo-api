@@ -142,7 +142,7 @@ class BravoApi
         $handlerStats = $reply->handlerStats();
 
         $response = $reply->json();
-        $response['primary_ip'] = $handlerStats['primary_ip'] ?? 'Not recorded';
+        $response['primaryIp'] = $handlerStats['primary_ip'] ?? 'Not recorded';
 
         $projectImport = new ProjectImport($response);
 
@@ -178,7 +178,7 @@ class BravoApi
         $handlerStats = $reply->handlerStats();
 
         $response = $reply->json();
-        $response['primary_ip'] = $handlerStats['primary_ip'] ?? 'Not recorded';
+        $response['primaryIp'] = $handlerStats['primary_ip'] ?? 'Not recorded';
 
         return new Workflow($response);
     }
