@@ -28,7 +28,8 @@ class BravoApi
             'base_uri' => config('bravo-api.base_url'),
         ])
             ->timeout(config('bravo-api.timeout'))
-            ->proxy(config('bravo-api.proxy_address'));
+            ->proxy(config('bravo-api.proxy_address'))
+            ->retry(config('bravo-api.retry_count'), config('bravo-api.retry_interval'));
 
         if (Cache::has('bravo_bearer_token')) {
             $this->token = Cache::get('bravo_bearer_token');
@@ -55,9 +56,7 @@ class BravoApi
                 'client_secret' => config('bravo-api.auth.client_secret'),
                 'grant_type' => config('bravo-api.auth.grant_type'),
             ])
-            ->throw(function ($response, $e) {
-                Log::error($e->getMessage());
-            })
+            ->throw()
             ->json();
 
         $authentication = new AuthenticationData($response);

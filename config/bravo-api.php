@@ -16,4 +16,7 @@ return [
     'proxy_address' => env('BRAVO_API_PROXY_ADDRESS', null),
 
     'timeout' => env('BRAVO_API_TIMEOUT', 10),
+
+    'retry_count' => env('BRAVO_API_RETRY_COUNT', 3),
+    'retry_interval' => env('BRAVO_API_RETRY_INTERVAL', 5000),
 ];
