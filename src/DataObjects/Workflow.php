@@ -10,7 +10,7 @@ use Spatie\DataTransferObject\Attributes\MapFrom;
 
 class Workflow extends DataTransferObject
 {
-    public string $tenderCode;
+    public ?string $tenderCode;
 
     public string $tenderReferenceCode;
 
