@@ -170,15 +170,15 @@ class BravoApi
 
         return new Workflow($response);
     }
-    
+
     protected function makeHttp(): PendingRequest
     {
         return Http::withOptions([
             'base_uri' => config('bravo-api.base_url'),
+            'connect_timeout' => config('bravo-api.timeout'),
+            'proxy' => config('bravo-api.proxy_address'),
+            'timeout' => config('bravo-api.timeout')
         ])
-            ->connectTimeout(config('bravo-api.timeout'))
-            ->timeout(config('bravo-api.timeout'))
-            ->proxy(config('bravo-api.proxy_address'))
             ->retry(config('bravo-api.retry_count'), config('bravo-api.retry_interval'));
     }
 }
