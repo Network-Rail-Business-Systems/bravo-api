@@ -18,19 +18,11 @@ use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 class BravoApi
 {
-    private PendingRequest $http;
     private string $token;
     private string $version = 'v1';
 
     public function __construct()
     {
-        $this->http = Http::withOptions([
-            'base_uri' => config('bravo-api.base_url'),
-        ])
-            ->timeout(config('bravo-api.timeout'))
-            ->proxy(config('bravo-api.proxy_address'))
-            ->retry(config('bravo-api.retry_count'), config('bravo-api.retry_interval'));
-
         if (Cache::has('bravo_bearer_token')) {
             $this->token = Cache::get('bravo_bearer_token');
         } else {
@@ -46,10 +38,7 @@ class BravoApi
      */
     public function authenticate(): bool
     {
-        $response = Http::withOptions([
-            'base_uri' => config('bravo-api.base_url'),
-        ])
-            ->proxy(config('bravo-api.proxy_address'))
+        $response = $this->makeHttp()
             ->asForm()
             ->post("/{$this->version}/tokens", [
                 'client_id' => config('bravo-api.auth.client_id'),
@@ -81,7 +70,7 @@ class BravoApi
         string $comp = '',
         int $startAt = 1,
     ): ProjectSearchData {
-        $response = $this->http
+        $response = $this->makeHttp()
             ->withToken($this->token)
             ->get("/ja/{$this->version}/projects/", [
                 'flt' => $filter,
@@ -107,7 +96,7 @@ class BravoApi
      */
     public function getProject(string $id): GetProject
     {
-        $response = $this->http
+        $response = $this->makeHttp()
             ->withToken($this->token)
             ->get("/ja/{$this->version}/projects/{$id}")
             ->throw()
@@ -125,7 +114,7 @@ class BravoApi
     {
         $jsonStream = fopen($jsonFilePath, 'r');
 
-        $client =  $this->http
+        $client =  $this->makeHttp()
             ->withToken($this->token)
             ->attach('data', $jsonStream);
 
@@ -169,7 +158,7 @@ class BravoApi
      */
     public function getWorkflow(string $tenderCode): Workflow
     {
-        $reply = $this->http
+        $reply = $this->makeHttp()
             ->withToken($this->token)
             ->get("/ja/{$this->version}/workflows/{$tenderCode}")
             ->throw();
@@ -180,5 +169,16 @@ class BravoApi
         $response['primaryIp'] = $handlerStats['primary_ip'] ?? 'Not recorded';
 
         return new Workflow($response);
+    }
+    
+    protected function makeHttp(): PendingRequest
+    {
+        return Http::withOptions([
+            'base_uri' => config('bravo-api.base_url'),
+        ])
+            ->connectTimeout(config('bravo-api.timeout'))
+            ->timeout(config('bravo-api.timeout'))
+            ->proxy(config('bravo-api.proxy_address'))
+            ->retry(config('bravo-api.retry_count'), config('bravo-api.retry_interval'));
     }
 }
