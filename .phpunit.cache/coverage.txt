@@ -1,0 +1,7 @@
+
+
+[1;37;40mCode Coverage Report Summary:[0m
+[37;41m  Classes: 38.10% (8/21)     [0m
+[30;43m  Methods: 56.25% (18/32)    [0m
+[30;43m  Lines:   81.82% (162/198)  [0m
+
