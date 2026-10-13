@@ -9,6 +9,4 @@ use Spatie\Enum\Enum;
  * @method static self LOCKED()
  * @method static self UNLOCKED()
  */
-class WorkflowType extends Enum
-{
-}
+class WorkflowType extends Enum {}

@@ -21,12 +21,12 @@ class BravoApiServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/bravo-api.php' => config_path('bravo-api.php'),
+            __DIR__ . '/../config/bravo-api.php' => config_path('bravo-api.php'),
         ]);
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/bravo-api.php',
-            'bravo-api'
+            __DIR__ . '/../config/bravo-api.php',
+            'bravo-api',
         );
 
         PendingRequest::macro('proxy', function (string $url) {

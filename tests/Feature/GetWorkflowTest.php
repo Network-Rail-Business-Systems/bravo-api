@@ -28,7 +28,7 @@ class GetWorkflowTest extends TestCase
         $this->assertEquals('tender_12345', $response->tenderCode);
         $this->assertEquals(
             'One Tender To Rule Them All, One Tender To Find Them, One Tender To Bring Them All And In The Darkness Bind Them.',
-            $response->tenderTitle
+            $response->tenderTitle,
         );
         $this->assertEquals('One potato, two potatoes, three potatoes, four...', $response->tasks->first()->name);
     }

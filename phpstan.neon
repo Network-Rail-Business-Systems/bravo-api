@@ -9,7 +9,5 @@ parameters:
     level: 6
 
     ignoreErrors:
-        - identifier: larastan.noEnvCallsOutsideOfConfig
         - identifier: missingType.iterableValue
-        - identifier: trait.unused
         - identifier: missingType.generics

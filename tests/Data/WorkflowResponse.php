@@ -6,7 +6,7 @@ class WorkflowResponse
 {
     public static function successful(): array
     {
-        return json_decode(file_get_contents(__DIR__.'/get_workflow.json'), true);
+        return json_decode(file_get_contents(__DIR__ . '/get_workflow.json'), true);
     }
 
     public static function unsuccessful(): int

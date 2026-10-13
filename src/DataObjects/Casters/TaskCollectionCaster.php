@@ -11,8 +11,8 @@ class TaskCollectionCaster implements Caster
     public function cast(mixed $value): CollectionOfTask
     {
         return new CollectionOfTask(array_map(
-            fn (array $data) => new Task(...$data),
-            $value
+            fn(array $data) => new Task(...$data),
+            $value,
         ));
     }
 }

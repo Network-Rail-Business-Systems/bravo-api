@@ -4,9 +4,9 @@ namespace NetworkRailBusinessSystems\BravoApi\RequestObjects;
 
 class User
 {
-    public string|null $name;
-    public int|null $id;
-    public string|null $login;
+    public ?string $name;
+    public ?int $id;
+    public ?string $login;
 
     public function toArray(): array
     {

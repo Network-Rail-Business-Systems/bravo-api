@@ -83,6 +83,6 @@ class PendingRequestMacroTest extends TestCase
 
     protected function setEnvironment(string $environment): void
     {
-        app()->detectEnvironment(fn () => $environment);
+        app()->detectEnvironment(fn() => $environment);
     }
 }

@@ -5,12 +5,13 @@ namespace NetworkRailBusinessSystems\BravoApi\RequestObjects;
 class Project
 {
     public Tender $tender;
+
     public Opportunity $opportunity;
 
     public CategoryList $categoryList;
 
     /** @var User[] */
-    public $projectTeam;
+    public ?array $projectTeam = null;
 
     public function __construct(bool $withOpportunity = false)
     {

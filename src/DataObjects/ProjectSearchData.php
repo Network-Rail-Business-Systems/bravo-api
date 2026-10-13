@@ -11,5 +11,5 @@ class ProjectSearchData extends DataTransferObject
     public int $totRecords;
     public int $returnedRecords;
     public int $startAt;
-    public ProjectList|null $projectList;
+    public ?ProjectList $projectList;
 }
