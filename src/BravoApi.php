@@ -139,9 +139,14 @@ class BravoApi
             throw new BravoApiException($projectImport->returnMessage);
         }
 
-        unlink($jsonFilePath);
+        if (file_exists($jsonFilePath) === true) {
+            unlink($jsonFilePath);
+        }
 
-        if (!is_null($attachmentFilePath)) {
+        if (
+            $attachmentFilePath !== null
+            && file_exists($attachmentFilePath) === true
+        ) {
             unlink($attachmentFilePath);
         }
 
@@ -150,6 +155,7 @@ class BravoApi
 
     public function updateArchiveStatus(Project $project, string $status): void
     {
+        //
     }
 
     /**

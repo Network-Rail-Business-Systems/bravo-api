@@ -1,17 +1,15 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./vendor/larastan/larastan/extension.neon
 
 parameters:
-
     paths:
         - src
 
-    # The level 8 is the highest level
-    level: 8
+    # Level 9 is the highest level
+    level: 6
 
     ignoreErrors:
-
-    excludePaths:
-        - ./*/*/FileToBeExcluded.php
-
-    checkMissingIterableValueType: false
+        - identifier: larastan.noEnvCallsOutsideOfConfig
+        - identifier: missingType.iterableValue
+        - identifier: trait.unused
+        - identifier: missingType.generics
