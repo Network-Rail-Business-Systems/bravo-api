@@ -9,8 +9,8 @@ class WorkflowResponse
         return json_decode(file_get_contents(__DIR__ . '/get_workflow.json'), true);
     }
 
-    public static function unsuccessful(): int
+    public static function unsuccessful(): string
     {
-        return 1;
+        return '1';
     }
 }

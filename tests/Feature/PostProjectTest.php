@@ -2,6 +2,7 @@
 
 namespace NetworkRailBusinessSystems\BravoApi\Tests\Feature;
 
+use GuzzleHttp\Psr7\Stream;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -19,8 +20,7 @@ class PostProjectTest extends TestCase
         Cache::set('bravo_bearer_token', 'test_token');
     }
 
-    /** @test */
-    public function attaches_json_file_to_request()
+    public function test_attaches_json_file_to_request(): void
     {
         [$jsonFilePath] = $this->createTestStubs([
             __DIR__ . "/../Data/create_project.json" => 'project.json',
@@ -31,17 +31,17 @@ class PostProjectTest extends TestCase
         ]);
 
         $bravoApi = new BravoApi();
-        $response = $bravoApi->postProject($jsonFilePath);
+        $bravoApi->postProject($jsonFilePath);
 
         Http::assertSent(function (Request $request) {
-            return count($request->data()) === 1
-                && $request->data()[0]['name'] === 'data'
-                && is_resource($request->data()[0]['contents']);
+            $data = $request->data();
+
+            return $data[0]['name'] === 'data'
+                && $data[0]['contents'] instanceof Stream;
         });
     }
 
-    /** @test */
-    public function attaches_attachment_to_request()
+    public function test_attaches_attachment_to_request(): void
     {
         [$jsonFilePath, $pdfFilePath] = $this->createTestStubs([
             __DIR__ . "/../Data/create_project.json" => 'project.json',
@@ -53,19 +53,19 @@ class PostProjectTest extends TestCase
         ]);
 
         $bravoApi = new BravoApi();
-        $response = $bravoApi->postProject($jsonFilePath, $pdfFilePath);
+        $bravoApi->postProject($jsonFilePath, $pdfFilePath);
 
         Http::assertSent(function (Request $request) {
-            return count($request->data()) === 2
-                && $request->data()[0]['name'] === 'data'
-                && $request->data()[1]['name'] === 'attachment.pdf'
-                && is_resource($request->data()[0]['contents'])
-                && is_resource($request->data()[1]['contents']);
+            $data = $request->data();
+
+            return $data[0]['name'] === 'data'
+                && $data[0]['contents'] instanceof Stream
+                && $data[1]['name'] === 'attachment.pdf'
+                && $data[1]['contents'] instanceof Stream;
         });
     }
 
-    /** @test */
-    public function deletes_temporary_files()
+    public function test_deletes_temporary_files(): void
     {
         [$jsonFilePath] = $this->createTestStubs([
             __DIR__ . "/../Data/create_project.json" => 'project.json',
@@ -83,8 +83,7 @@ class PostProjectTest extends TestCase
         $this->assertFalse(file_exists($jsonFilePath));
     }
 
-    /** @test */
-    public function successfully_create_project()
+    public function test_successfully_create_project(): void
     {
         [$jsonFilePath] = $this->createTestStubs([
             __DIR__ . "/../Data/create_project.json" => 'project.json',
@@ -103,8 +102,7 @@ class PostProjectTest extends TestCase
         $this->assertEquals('9999', $response->tenderReferenceCode);
     }
 
-    /** @test */
-    public function error_creating_project()
+    public function test_error_creating_project(): void
     {
         $this->expectException(BravoApiException::class);
         $this->expectExceptionMessage('124(code,TenderCode,TenderReferenceCode)');

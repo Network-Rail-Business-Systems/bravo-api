@@ -10,8 +10,7 @@ use NetworkRailBusinessSystems\BravoApi\Tests\TestCase;
 
 class AuthenticateTest extends TestCase
 {
-    /** @test */
-    public function successful_authentication()
+    public function test_successful_authentication()
     {
         Http::fake([
             'bravo.test/v1/tokens' => Http::response(AuthenticateResponse::successful()),
@@ -23,8 +22,7 @@ class AuthenticateTest extends TestCase
         $this->assertTrue($response);
     }
 
-    /** @test */
-    public function failed_authentication()
+    public function test_failed_authentication()
     {
         $this->expectException(RequestException::class);
         $this->expectExceptionMessage('HTTP request returned status code 401');

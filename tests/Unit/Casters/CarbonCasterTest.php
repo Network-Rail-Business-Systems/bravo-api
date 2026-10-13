@@ -7,15 +7,13 @@ use NetworkRailBusinessSystems\BravoApi\Tests\TestCase;
 
 class CarbonCasterTest extends TestCase
 {
-    /** @test */
-    public function it_returns_null_for_null()
+    public function test_it_returns_null_for_null()
     {
         $carbonCaster = new CarbonCaster();
         $this->assertNull($carbonCaster->cast(null));
     }
 
-    /** @test */
-    public function it_returns_carbon_instance_for_valid_date()
+    public function test_it_returns_carbon_instance_for_valid_date()
     {
         $carbonCaster = new CarbonCaster();
         $this->assertEquals(
