@@ -6,7 +6,7 @@
 ![PHP version](.github/php.svg)
 ![Tests status](.github/tests.svg)
 
-A Laravel package to send and retrieve data from Bravo using the Bravo rest API.
+A Laravel package to send and retrieve data from Bravo using the Bravo rest API
 
 ## Contents
 
