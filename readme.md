@@ -1,6 +1,12 @@
 # Bravo API
 
-A Laravel package to send and retrieve data from Bravo using the Bravo rest API.
+![Composer status](.github/composer.svg)
+![Coverage status](.github/coverage.svg)
+![Laravel version](.github/laravel.svg)
+![PHP version](.github/php.svg)
+![Tests status](.github/tests.svg)
+
+A Laravel package to send and retrieve data from Bravo using the Bravo rest API
 
 ## Contents
 

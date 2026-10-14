@@ -7,20 +7,20 @@ use NetworkRailBusinessSystems\BravoApi\Enums\WorkflowType;
 
 class Tender
 {
-    public string|null $code;
-    public string|null $tenderCode;
-    public string|null $tenderReferenceCode;
+    public ?string $code;
+    public ?string $tenderCode;
+    public ?string $tenderReferenceCode;
     public string $title;
-    public string|null $description;
-    public string|null $reference;
-    public User|null $buyerCompany = null;
-    public User|null $projectOwner = null;
-    public string|null $officialStartDate;
-    public string|null $requirementsDate;
-    public string|null $sourceTemplateCode;
-    public string|null $sourceTemplateReferenceCode;
+    public ?string $description;
+    public ?string $reference;
+    public ?User $buyerCompany = null;
+    public ?User $projectOwner = null;
+    public ?string $officialStartDate;
+    public ?string $requirementsDate;
+    public ?string $sourceTemplateCode;
+    public ?string $sourceTemplateReferenceCode;
     public LotType $lotType;
-    public string|null $projectType;
+    public ?string $projectType;
     public WorkflowType $workFlowType;
 
     /** @var FlexibleField[] */

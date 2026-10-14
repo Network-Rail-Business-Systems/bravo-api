@@ -5,13 +5,13 @@ namespace NetworkRailBusinessSystems\BravoApi\RequestObjects;
 class CategoryList
 {
     /** @var \NetworkRailBusinessSystems\BravoApi\RequestObjects\Category[]  */
-    public $category;
+    public ?array $category = null;
 
     public function toArray(): array
     {
         $categories = [];
 
-        if (isset($this->category)) {
+        if ($this->category !== null) {
             foreach ($this->category as $key => $category) {
                 $categories[$key]['categoryCode'] = $category->categoryCode;
                 $categories[$key]['categoryName'] = $category->categoryName;

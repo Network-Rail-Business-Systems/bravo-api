@@ -10,8 +10,7 @@ use NetworkRailBusinessSystems\BravoApi\Tests\TestCase;
 
 class ProjectOperationTest extends TestCase
 {
-    /** @test */
-    public function build_project_operation()
+    public function test_build_project_operation()
     {
         $projectOperation = new ProjectOperation();
 
@@ -27,8 +26,7 @@ class ProjectOperationTest extends TestCase
         $this->assertEquals('My Project Title', $projectOperation->project->tender->title);
     }
 
-    /** @test */
-    public function build_project_with_category()
+    public function test_build_project_with_category()
     {
         $projectOperation = new ProjectOperation();
 

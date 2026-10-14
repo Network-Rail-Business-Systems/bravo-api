@@ -6,6 +6,8 @@ use Faker\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use NetworkRailBusinessSystems\BravoApi\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use ReflectionClass;
 
 class PendingRequestMacroTest extends TestCase
 {
@@ -18,12 +20,8 @@ class PendingRequestMacroTest extends TestCase
         $this->proxyAddress = Factory::create()->url();
     }
 
-
-    /**
-     * @test
-     * @dataProvider nonProxyEnvironments
-     */
-    public function proxy_will_not_be_added_to_client_when_environment_to(string $environment)
+    #[DataProvider('nonProxyEnvironments')]
+    public function test_proxy_will_not_be_added_to_client_when_environment_to(string $environment)
     {
         $this->setEnvironment($environment);
 
@@ -34,12 +32,8 @@ class PendingRequestMacroTest extends TestCase
         $this->assertArrayNotHasKey('proxy', $options);
     }
 
-
-    /**
-     * @test
-     * @dataProvider proxyEnvironments
-     */
-    public function proxy_will_be_added_to_client_when_environment_set_to(string $environment)
+    #[DataProvider('proxyEnvironments')]
+    public function test_proxy_will_be_added_to_client_when_environment_set_to(string $environment)
     {
         $this->setEnvironment($environment);
 
@@ -51,8 +45,7 @@ class PendingRequestMacroTest extends TestCase
         $this->assertSame($this->proxyAddress, $options['proxy']);
     }
 
-
-    public function nonProxyEnvironments(): array
+    public static function nonProxyEnvironments(): array
     {
         return [
             ['local'],
@@ -60,8 +53,7 @@ class PendingRequestMacroTest extends TestCase
         ];
     }
 
-
-    public function proxyEnvironments(): array
+    public static function proxyEnvironments(): array
     {
         return [
             ['staging'],
@@ -69,10 +61,9 @@ class PendingRequestMacroTest extends TestCase
         ];
     }
 
-
     protected function getOptions(PendingRequest $client): array
     {
-        $reflectionProperty = (new \ReflectionClass(PendingRequest::class))
+        $reflectionProperty = (new ReflectionClass(PendingRequest::class))
             ->getProperty('options');
 
         $reflectionProperty->setAccessible(true);
@@ -80,9 +71,8 @@ class PendingRequestMacroTest extends TestCase
         return $reflectionProperty->getValue($client);
     }
 
-
     protected function setEnvironment(string $environment): void
     {
-        app()->detectEnvironment(fn () => $environment);
+        app()->detectEnvironment(fn() => $environment);
     }
 }

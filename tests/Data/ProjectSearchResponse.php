@@ -6,12 +6,12 @@ class ProjectSearchResponse
 {
     public static function successfulSearch()
     {
-        return json_decode(file_get_contents(__DIR__.'/projects_search.json'), true);
+        return json_decode(file_get_contents(__DIR__ . '/projects_search.json'), true);
     }
 
     public static function successfulGet()
     {
-        return json_decode(file_get_contents(__DIR__.'/get_project.json'), true);
+        return json_decode(file_get_contents(__DIR__ . '/get_project.json'), true);
     }
 
     public static function unsuccessfulResponse()

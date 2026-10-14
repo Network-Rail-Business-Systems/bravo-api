@@ -30,8 +30,7 @@ class GetProjectTest extends TestCase
         $this->assertEquals('An example category', $response->categoryList->first()->categoryName);
     }
 
-    /** @test */
-    public function unsuccessful_get_project_returns_404()
+    public function test_unsuccessful_get_project_returns_404()
     {
         $this->expectException(RequestException::class);
 

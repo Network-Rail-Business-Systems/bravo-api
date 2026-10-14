@@ -11,6 +11,4 @@ use Spatie\Enum\Enum;
  * @method static self CREATEUPDATE_RESET()
  * @method static self CREATE_FROM_TEMPLATE()
  */
-class OperationCode extends Enum
-{
-}
+class OperationCode extends Enum {}

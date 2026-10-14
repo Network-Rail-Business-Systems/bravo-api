@@ -11,7 +11,7 @@ use NetworkRailBusinessSystems\BravoApi\Tests\TestCase;
 
 class SearchProjectsTest extends TestCase
 {
-    public function successful_search_projects()
+    public function test_successful_search_projects()
     {
         Cache::set('bravo_bearer_token', 'test_token');
         Http::fake([
@@ -36,8 +36,7 @@ class SearchProjectsTest extends TestCase
         );
     }
 
-    /** @test */
-    public function unsuccessful_search_projects()
+    public function test_unsuccessful_search_projects()
     {
         $this->expectException(BravoApiException::class);
 

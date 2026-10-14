@@ -139,9 +139,14 @@ class BravoApi
             throw new BravoApiException($projectImport->returnMessage);
         }
 
-        unlink($jsonFilePath);
+        if (file_exists($jsonFilePath) === true) {
+            unlink($jsonFilePath);
+        }
 
-        if (!is_null($attachmentFilePath)) {
+        if (
+            $attachmentFilePath !== null
+            && file_exists($attachmentFilePath) === true
+        ) {
             unlink($attachmentFilePath);
         }
 
@@ -150,6 +155,7 @@ class BravoApi
 
     public function updateArchiveStatus(Project $project, string $status): void
     {
+        //
     }
 
     /**
@@ -177,7 +183,7 @@ class BravoApi
             'base_uri' => config('bravo-api.base_url'),
             'connect_timeout' => config('bravo-api.timeout'),
             'proxy' => config('bravo-api.proxy_address'),
-            'timeout' => config('bravo-api.timeout')
+            'timeout' => config('bravo-api.timeout'),
         ])
             ->retry(config('bravo-api.retry_count'), config('bravo-api.retry_interval'));
     }

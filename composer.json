@@ -32,15 +32,18 @@
         }
     },
     "require": {
-        "php": "^8.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "spatie/data-transfer-object": "^3.0",
-        "spatie/enum": "^3.9"
+        "php": "^8.3",
+        "guzzlehttp/guzzle": "^7",
+        "spatie/data-transfer-object": "^3",
+        "spatie/enum": "^3"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.20",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "nunomaduro/larastan": "^0.7.12"
+        "orchestra/testbench": "^11",
+        "larastan/larastan": "^3",
+        "laravel/pint": "^1",
+        "brianium/paratest": "^7",
+        "networkrailbusinesssystems/badges": "^1",
+        "phpunit/phpunit": "^12"
     },
     "scripts": {
         "post-autoload-dump": [

@@ -5,7 +5,7 @@ namespace NetworkRailBusinessSystems\BravoApi\RequestObjects;
 class AttachmentDetail
 {
     public string $fileName;
-    public string|null $fileDescription;
+    public ?string $fileDescription;
 
     public function toArray(): array
     {

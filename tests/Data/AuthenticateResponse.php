@@ -11,7 +11,7 @@ class AuthenticateResponse
             'resource' => 'test-url/tokens',
             'token_type' => 'Bearer',
             'expire_on' => now()->addDay()->toAtomString(),
-            'expire_in' => 86399911
+            'expire_in' => 86399911,
         ];
     }
 }

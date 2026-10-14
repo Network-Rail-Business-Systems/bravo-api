@@ -2,6 +2,4 @@
 
 namespace NetworkRailBusinessSystems\BravoApi\Exceptions;
 
-class BravoApiException extends \Exception
-{
-}
+class BravoApiException extends \Exception {}

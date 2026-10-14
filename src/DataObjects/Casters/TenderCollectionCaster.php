@@ -11,8 +11,8 @@ class TenderCollectionCaster implements Caster
     public function cast(mixed $value): CollectionOfTender
     {
         return new CollectionOfTender(array_map(
-            fn (array $data) => new Tender(...$data),
-            $value
+            fn(array $data) => new Tender(...$data),
+            $value,
         ));
     }
 }

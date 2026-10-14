@@ -11,7 +11,7 @@ use NetworkRailBusinessSystems\BravoApi\Tests\TestCase;
 
 class GetWorkflowTest extends TestCase
 {
-    public function test_get_workflow()
+    public function test_get_workflow(): void
     {
         Cache::set('bravo_bearer_token', 'test_token');
 
@@ -28,13 +28,12 @@ class GetWorkflowTest extends TestCase
         $this->assertEquals('tender_12345', $response->tenderCode);
         $this->assertEquals(
             'One Tender To Rule Them All, One Tender To Find Them, One Tender To Bring Them All And In The Darkness Bind Them.',
-            $response->tenderTitle
+            $response->tenderTitle,
         );
         $this->assertEquals('One potato, two potatoes, three potatoes, four...', $response->tasks->first()->name);
     }
 
-    /** @test */
-    public function unsuccessful_get_workflow_returns_404()
+    public function test_unsuccessful_get_workflow_returns_404(): void
     {
         $this->expectException(RequestException::class);
 
